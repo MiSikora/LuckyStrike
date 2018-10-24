@@ -26,14 +26,14 @@ public final class StairSequenceDetector implements CardSequenceDetector {
   }
 
   private boolean hasAscendingSequence(List<Card> cards) {
-    return pairIterate(cards, Rank::isNext);
+    return filterByPair(cards, Rank::isNext);
   }
 
   private boolean hasDescendingSequence(List<Card> cards) {
-    return pairIterate(cards, Rank::isPrevious);
+    return filterByPair(cards, Rank::isPrevious);
   }
 
-  private boolean pairIterate(List<Card> cards, BiPredicate<Rank, Rank> predicate) {
+  private boolean filterByPair(List<Card> cards, BiPredicate<Rank, Rank> predicate) {
     Iterator<Card> iterator = cards.iterator();
     Rank currentRank = iterator.next().rank;
     int matchCount = 1;
