@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import dagger.android.AndroidInjection;
 
 public final class CreateDeckActivity extends Activity {
   private TextView deckCountLabel;
@@ -12,6 +13,7 @@ public final class CreateDeckActivity extends Activity {
 
   @Override protected void onCreate(@Nullable Bundle inState) {
     super.onCreate(inState);
+    AndroidInjection.inject(this);
     setContentView(R.layout.create_deck);
     deckCountLabel = findViewById(R.id.deck_count_label);
     deckCountSlider = findViewById(R.id.deck_count_slider);

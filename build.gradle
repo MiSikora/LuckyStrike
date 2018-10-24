@@ -5,6 +5,7 @@ buildscript {
   }
 
   ext.versions = [
+      "dagger": "2.18",
       "retrofit": "2.4.0",
   ]
 
@@ -14,6 +15,12 @@ buildscript {
           "appCompat": "androidx.appcompat:appcompat:1.0.0",
           "constraintLayout": "androidx.constraintlayout:constraintlayout:1.1.3",
           "recyclerView": "androidx.recyclerview:recyclerview:1.0.0",
+      ],
+      "dagger": [
+          "runtime": "com.google.dagger:dagger:${versions.dagger}",
+          "compiler": "com.google.dagger:dagger-compiler:${versions.dagger}",
+          "androidRuntime": "com.google.dagger:dagger-android:${versions.dagger}",
+          "androidCompiler": "com.google.dagger:dagger-android-processor:${versions.dagger}",
       ],
       "okio": "com.squareup.okio:okio:2.1.0",
       "okhttp": "com.squareup.okhttp3:okhttp:3.11.0",
@@ -70,6 +77,11 @@ dependencies {
   implementation deps.androidx.appCompat
   implementation deps.androidx.constraintLayout
   implementation deps.androidx.recyclerView
+
+  implementation deps.dagger.runtime
+  implementation deps.dagger.androidRuntime
+  annotationProcessor deps.dagger.compiler
+  annotationProcessor deps.dagger.androidCompiler
 
   implementation deps.rx.java
   implementation deps.rx.android
