@@ -1,4 +1,4 @@
-package io.mehow.luckystrike;
+package io.mehow.luckystrike.api;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.JsonDataException;
