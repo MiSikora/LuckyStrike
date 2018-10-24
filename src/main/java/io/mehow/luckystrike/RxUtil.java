@@ -1,9 +1,7 @@
 package io.mehow.luckystrike;
 
-import android.view.View;
 import io.reactivex.Observable;
 import io.reactivex.ObservableTransformer;
-import io.reactivex.android.MainThreadDisposable;
 import io.reactivex.exceptions.OnErrorNotImplementedException;
 import io.reactivex.functions.Function;
 
@@ -23,17 +21,5 @@ final class RxUtil {
 
   static void rethrow(Throwable throwable) {
     throw new OnErrorNotImplementedException("Source!", throwable);
-  }
-
-  static Observable<Object> viewClicks(View view) {
-    return Observable.create(emitter -> {
-      MainThreadDisposable.verifyMainThread();
-      view.setOnClickListener(v -> emitter.onNext(new Object()));
-      emitter.setDisposable(new MainThreadDisposable() {
-        @Override protected void onDispose() {
-          view.setOnClickListener(null);
-        }
-      });
-    });
   }
 }

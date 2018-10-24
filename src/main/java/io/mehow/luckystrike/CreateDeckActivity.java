@@ -7,6 +7,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+import com.jakewharton.rxbinding3.view.RxView;
 import dagger.android.AndroidInjection;
 import io.mehow.luckystrike.CreateDeckPresenter.CreateDeckEvent;
 import io.mehow.luckystrike.CreateDeckPresenter.CreateDeckResult;
@@ -46,7 +47,7 @@ public final class CreateDeckActivity extends Activity {
     });
 
     Button createDeckButton = findViewById(R.id.create_deck_button);
-    Observable<CreateDeckEvent> events = RxUtil.viewClicks(createDeckButton)
+    Observable<CreateDeckEvent> events = RxView.clicks(createDeckButton)
         .map(click -> new CreateDeckEvent(deckCount(deckCountSlider.getProgress())));
 
     disposables.add(events.compose(presenter::accept)
