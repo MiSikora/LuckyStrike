@@ -3,6 +3,7 @@ package io.mehow.luckystrike;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,11 +17,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import javax.inject.Inject;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public final class CreateDeckActivity extends Activity {
   @Inject CreateDeckPresenter presenter;
 
   private TextView deckCountLabel;
   private SeekBar deckCountSlider;
+  private ProgressBar progressBar;
 
   private final CompositeDisposable disposables = new CompositeDisposable();
 
@@ -30,6 +35,7 @@ public final class CreateDeckActivity extends Activity {
     setContentView(R.layout.create_deck);
     deckCountLabel = findViewById(R.id.deck_count_label);
     deckCountSlider = findViewById(R.id.deck_count_slider);
+    progressBar = findViewById(R.id.progress_bar);
 
     updateDeckCountProgress(deckCountSlider.getProgress());
     deckCountSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -56,12 +62,12 @@ public final class CreateDeckActivity extends Activity {
   }
 
   private void consumeResult(CreateDeckResult result) {
-    if (result.deckId != null) {
+    progressBar.setVisibility(result.pending ? VISIBLE : GONE);
+    result.deckId.ifPresent(deckId -> {
       // TODO: Navigate to another Activity.
-      Toast.makeText(this, result.deckId, Toast.LENGTH_SHORT).show();
-    } else {
-      Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show();
-    }
+      Toast.makeText(this, deckId, Toast.LENGTH_SHORT).show();
+    });
+    result.error.ifPresent(this::toast);
   }
 
   @Override protected void onDestroy() {
@@ -76,5 +82,9 @@ public final class CreateDeckActivity extends Activity {
 
   private void updateDeckCountProgress(int progress) {
     deckCountLabel.setText(getString(R.string.deck_count, deckCount(progress)));
+  }
+
+  private void toast(String message) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
   }
 }
