@@ -71,14 +71,14 @@ public final class FigureSequenceDetectorTest {
   );
 
   @Test public void sufficientCountMustBePositive() {
-    assertThatCode(() -> new FiguresSequenceDetector(-1))
+    assertThatCode(() -> new FigureSequenceDetector(-1))
         .isInstanceOf(IllegalArgumentException.class)
         .hasNoCause()
         .hasMessage("sufficientCount must be positive!");
   }
 
   @Test public void noSequence() {
-    CardSequenceDetector detector = new FiguresSequenceDetector(2);
+    CardSequenceDetector detector = new FigureSequenceDetector(2);
 
     Hand result = detector.detectSequence(NO_SEQUENCE);
 
@@ -86,7 +86,7 @@ public final class FigureSequenceDetectorTest {
   }
 
   @Test public void tooSmallSequence() {
-    CardSequenceDetector detector = new FiguresSequenceDetector(3);
+    CardSequenceDetector detector = new FigureSequenceDetector(3);
 
     SEQUENCES_OF_TWO.forEach(hand -> {
       Hand result = detector.detectSequence(hand);
@@ -96,7 +96,7 @@ public final class FigureSequenceDetectorTest {
   }
 
   @Test public void validSequences() {
-    CardSequenceDetector detector = new FiguresSequenceDetector(2);
+    CardSequenceDetector detector = new FigureSequenceDetector(2);
 
     SEQUENCES_OF_TWO.forEach(hand -> {
       Hand result = detector.detectSequence(hand);

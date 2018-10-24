@@ -37,7 +37,7 @@ public final class PlayGameActivity extends Activity {
       int sequenceMatch = 3;
       return new ChainedSequenceDetector.Builder()
           .add(new SuitSequenceDetector(sequenceMatch))
-          .add(new FiguresSequenceDetector(sequenceMatch))
+          .add(new FigureSequenceDetector(sequenceMatch))
           .add(new GeminiSequenceDetector(sequenceMatch))
           .add(new StairSequenceDetector(sequenceMatch))
           .build();

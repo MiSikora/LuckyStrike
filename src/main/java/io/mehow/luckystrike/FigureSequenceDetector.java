@@ -2,10 +2,10 @@ package io.mehow.luckystrike;
 
 import static io.mehow.luckystrike.CardSequence.FIGURE;
 
-final class FiguresSequenceDetector implements CardSequenceDetector {
+final class FigureSequenceDetector implements CardSequenceDetector {
   private final int sufficientCount;
 
-  FiguresSequenceDetector(int sufficientCount) {
+  FigureSequenceDetector(int sufficientCount) {
     if (sufficientCount <= 0) {
       throw new IllegalArgumentException("sufficientCount must be positive!");
     }
