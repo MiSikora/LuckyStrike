@@ -58,10 +58,10 @@ public final class CreateDeckActivity extends Activity {
 
     disposables.add(events.compose(presenter::accept)
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(this::consumeResult, RxUtil::rethrow));
+        .subscribe(this::render, RxUtil::rethrow));
   }
 
-  private void consumeResult(CreateDeckUiModel uiModel) {
+  private void render(CreateDeckUiModel uiModel) {
     progressBar.setVisibility(uiModel.pending ? VISIBLE : GONE);
     uiModel.deckId.ifPresent(deckId -> startActivity(PlayGameActivity.show(this, deckId)));
     uiModel.error.ifPresent(this::toast);

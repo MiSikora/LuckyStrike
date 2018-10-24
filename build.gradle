@@ -35,6 +35,7 @@ buildscript {
           "converterMoshi": "com.squareup.retrofit2:converter-moshi:${versions.retrofit}",
           "adapterRxJava": "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
       ],
+      "picasso": "com.squareup.picasso:picasso:2.71828",
       "junit": "junit:junit:4.12",
       "assertj": "org.assertj:assertj-core:3.11.1",
   ]
@@ -94,6 +95,8 @@ dependencies {
   implementation deps.retrofit.client
   implementation deps.retrofit.converterMoshi
   implementation deps.retrofit.adapterRxJava
+
+  implementation deps.picasso
 
   testImplementation deps.junit
   testImplementation deps.assertj
