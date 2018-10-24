@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 final class FakeDeckApi implements DeckApi {
   private static final AtomicInteger DECK_ID_GENERATOR = new AtomicInteger();
 
   private final HashMap<String, Deck> decks = new HashMap<>();
+  private final AtomicBoolean enableErrors = new AtomicBoolean();
 
   String createDeckSync(int deckCount) {
     String deckId = String.valueOf(DECK_ID_GENERATOR.getAndIncrement());
@@ -25,7 +27,14 @@ final class FakeDeckApi implements DeckApi {
     return new ArrayList<>(decks.get(deckId).cards);
   }
 
+  void enableErrors(boolean enable) {
+    enableErrors.set(enable);
+  }
+
   @Override public Single<ShuffleDeckResponse> createDeck(int deckCount) {
+    if (enableErrors.get()) {
+      return Single.error(new RuntimeException());
+    }
     return Single.fromCallable(() -> {
       String deckId = createDeckSync(deckCount);
       return new ShuffleDeckResponse(deckId, decks.get(deckId).cards.size());
@@ -33,6 +42,9 @@ final class FakeDeckApi implements DeckApi {
   }
 
   @Override public Single<ShuffleDeckResponse> reshuffleDeck(String deckId) {
+    if (enableErrors.get()) {
+      return Single.error(new RuntimeException());
+    }
     return Single.fromCallable(() -> {
       Deck deck = decks.get(deckId);
       Deck reshuffledDeck = Deck.generateDeck(deck.originalDeckCount);
@@ -42,6 +54,9 @@ final class FakeDeckApi implements DeckApi {
   }
 
   @Override public Single<DrawCardsResponse> draw(String deckId, int cardCount) {
+    if (enableErrors.get()) {
+      return Single.error(new RuntimeException());
+    }
     return Single.fromCallable(() -> {
       List<Card> cards = decks.get(deckId).cards;
       List<Card> drawnCards;

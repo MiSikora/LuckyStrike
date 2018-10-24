@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import com.jakewharton.rxbinding3.view.RxView;
 import dagger.android.AndroidInjection;
 import io.mehow.luckystrike.CreateDeckPresenter.CreateDeckEvent;
-import io.mehow.luckystrike.CreateDeckPresenter.CreateDeckResult;
+import io.mehow.luckystrike.CreateDeckPresenter.CreateDeckUiModel;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -61,10 +61,10 @@ public final class CreateDeckActivity extends Activity {
         .subscribe(this::consumeResult, RxUtil::rethrow));
   }
 
-  private void consumeResult(CreateDeckResult result) {
-    progressBar.setVisibility(result.pending ? VISIBLE : GONE);
-    result.deckId.ifPresent(deckId -> startActivity(PlayGameActivity.show(this, deckId)));
-    result.error.ifPresent(this::toast);
+  private void consumeResult(CreateDeckUiModel uiModel) {
+    progressBar.setVisibility(uiModel.pending ? VISIBLE : GONE);
+    uiModel.deckId.ifPresent(deckId -> startActivity(PlayGameActivity.show(this, deckId)));
+    uiModel.error.ifPresent(this::toast);
   }
 
   @Override protected void onDestroy() {
