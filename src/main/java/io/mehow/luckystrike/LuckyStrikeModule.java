@@ -4,8 +4,12 @@ import com.squareup.moshi.Moshi;
 import dagger.Module;
 import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
-import io.mehow.luckystrike.Card.Rank;
-import io.mehow.luckystrike.PlayGameActivity.PlayGameModule;
+import io.mehow.luckystrike.api.DeckApi;
+import io.mehow.luckystrike.api.RankJsonAdapter;
+import io.mehow.luckystrike.card.Card.Rank;
+import io.mehow.luckystrike.game.play.PlayGameActivity;
+import io.mehow.luckystrike.game.play.PlayGameModule;
+import io.mehow.luckystrike.game.start.StartGameActivity;
 import javax.inject.Singleton;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -27,7 +31,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
     return retrofit.create(DeckApi.class);
   }
 
-  @ContributesAndroidInjector abstract CreateDeckActivity contributeCreateDeckActivity();
+  @ContributesAndroidInjector abstract StartGameActivity contributeCreateDeckActivity();
 
   @ContributesAndroidInjector(modules = PlayGameModule.class)
   abstract PlayGameActivity contributePlayGameActivity();

@@ -14,7 +14,7 @@
       android:theme="@style/Theme.LuckyStrike"
       tools:ignore="GoogleAppIndexingWarning">
     <activity
-        android:name=".CreateDeckActivity"
+        android:name=".game.start.StartGameActivity"
         android:launchMode="singleInstance"
         >
       <intent-filter>
@@ -24,7 +24,7 @@
       </intent-filter>
     </activity>
     <activity
-        android:name=".PlayGameActivity"
+        android:name=".game.play.PlayGameActivity"
         android:launchMode="singleInstance"/>
   </application>
 </manifest>
