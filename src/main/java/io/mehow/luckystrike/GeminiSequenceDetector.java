@@ -20,12 +20,14 @@ final class GeminiSequenceDetector implements CardSequenceDetector {
     Map<Rank, Integer> rankCountMap = new HashMap<>();
     hand.getCards().forEach(card -> incrementOccurrenceCount(rankCountMap, card.rank));
 
-    return rankCountMap.values()
+    boolean hasSequence = rankCountMap.values()
         .stream()
-        .filter(it -> it >= sufficientCount)
-        .findAny()
-        .map(it -> hand.addSequence(GEMINI))
-        .orElse(hand);
+        .anyMatch(it -> it >= sufficientCount);
+
+    if (hasSequence) {
+      return hand.addSequence(GEMINI);
+    }
+    return hand;
   }
 
   private void incrementOccurrenceCount(Map<Rank, Integer> map, Rank rank) {
