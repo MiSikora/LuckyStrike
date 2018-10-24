@@ -4,7 +4,20 @@ buildscript {
     google()
   }
 
+  ext.versions = [
+      "retrofit": "2.4.0",
+  ]
+
   ext.deps = [
+      "okio": "com.squareup.okio:okio:2.1.0",
+      "okhttp": "com.squareup.okhttp3:okhttp:3.11.0",
+      "moshi": "com.squareup.moshi:moshi:1.7.0",
+      "rxJava": "io.reactivex.rxjava2:rxjava:2.2.3",
+      "retrofit": [
+          "client": "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+          "converterMoshi": "com.squareup.retrofit2:converter-moshi:${versions.retrofit}",
+          "adapterRxJava": "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
+      ],
       "junit": "junit:junit:4.12",
       "assertj": "org.assertj:assertj-core:3.11.1",
   ]
@@ -44,6 +57,15 @@ android {
 }
 
 dependencies {
+  implementation deps.rxJava
+
+  implementation deps.okio
+  implementation deps.okhttp
+  implementation deps.moshi
+  implementation deps.retrofit.client
+  implementation deps.retrofit.converterMoshi
+  implementation deps.retrofit.adapterRxJava
+
   testImplementation deps.junit
   testImplementation deps.assertj
 }
