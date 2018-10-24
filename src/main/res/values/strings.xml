@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">LuckyStrike</string>
+  <string name="create_deck_info">Please select amount of decks you want to play with and press the button.</string>
+  <string name="deck_count">Deck count: %d</string>
+  <string name="create_deck">Create deck</string>
 </resources>

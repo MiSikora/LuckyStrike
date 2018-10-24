@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Base.Theme.LuckyStrike" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@color/green</item>
+    <item name="colorPrimaryDark">@color/green_dark</item>
+    <item name="colorAccent">@color/green</item>
+    <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Colored</item>
+  </style>
+
+  <style name="Theme.LuckyStrike" parent="Base.Theme.LuckyStrike" />
+</resources>
