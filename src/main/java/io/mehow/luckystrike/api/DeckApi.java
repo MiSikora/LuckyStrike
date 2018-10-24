@@ -6,7 +6,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface DeckApi {
-
   @POST("api/deck/new/shuffle")
   Single<ShuffleDeckResponse> createDeck(@Query("deck_count") int deckCount);
 

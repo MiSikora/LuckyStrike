@@ -8,7 +8,6 @@ import static io.mehow.luckystrike.card.CardSequence.GEMINI;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public final class ChainedSequenceDetectorTest {
-
   @Test public void usesAllChains() {
     CardSequenceDetector detector = new ChainedSequenceDetector.Builder()
         .add(hand -> hand.addSequence(GEMINI))

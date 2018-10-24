@@ -10,7 +10,6 @@ import io.mehow.luckystrike.card.StairSequenceDetector;
 import io.mehow.luckystrike.card.SuitSequenceDetector;
 
 @Module public abstract class PlayGameModule {
-
   @Provides static String provideDeckId(PlayGameActivity activity) {
     return activity.getIntent().getStringExtra(PlayGameActivity.DECK_ID_KEY);
   }

@@ -9,7 +9,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import javax.inject.Singleton;
 
-@Singleton @Component(modules = { AndroidInjectionModule.class, LuckyStrikeModule.class})
+@Singleton @Component(modules = { AndroidInjectionModule.class, LuckyStrikeModule.class })
 interface LuckyStrikeComponent extends AndroidInjector<LuckyStrikeApplication> {
   DispatchingAndroidInjector<Activity> activityInjector();
 
