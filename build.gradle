@@ -1,0 +1,39 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    google()
+  }
+
+  dependencies {
+    classpath "com.android.tools.build:gradle:3.2.1"
+  }
+}
+
+apply plugin: "com.android.application"
+
+repositories {
+  mavenCentral()
+  google()
+}
+
+android {
+  compileSdkVersion 28
+  buildToolsVersion "28.0.3"
+
+  defaultConfig {
+    applicationId "io.mehow.luckystrike"
+
+    minSdkVersion 24
+    targetSdkVersion 28
+
+    versionCode 1
+    versionName "0.0.1"
+
+    resConfigs "en"
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
