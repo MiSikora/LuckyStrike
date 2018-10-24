@@ -1,6 +1,7 @@
 package io.mehow.luckystrike;
 
 import com.squareup.moshi.Json;
+import java.util.Objects;
 
 final class Card {
   @Json(name = "value") final Rank rank;
@@ -11,6 +12,27 @@ final class Card {
     this.rank = rank;
     this.suit = suit;
     this.imageUrl = imageUrl;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Card card = (Card) o;
+    return rank == card.rank
+        && suit == card.suit
+        && Objects.equals(imageUrl, card.imageUrl);
+  }
+
+  @Override public int hashCode() {
+    return Objects.hash(rank, suit, imageUrl);
+  }
+
+  @Override public String toString() {
+    return "Card{" +
+        "rank=" + rank +
+        ", suit=" + suit +
+        ", imageUrl='" + imageUrl + '\'' +
+        '}';
   }
 
   enum Rank {
