@@ -29,7 +29,7 @@ final class CreateDeckPresenter {
   }
 
   // Should use i.e. visitor pattern but would be too over-engineered for this sample.
-  final static class CreateDeckUiModel {
+  static final class CreateDeckUiModel {
     final Optional<String> deckId;
     final Optional<String> error;
     final boolean pending;
