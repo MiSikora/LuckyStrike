@@ -19,7 +19,7 @@ final class ChainedSequenceDetector implements CardSequenceDetector {
   }
 
   static class Builder {
-    Set<CardSequenceDetector> detectors = new LinkedHashSet<>();
+    private Set<CardSequenceDetector> detectors = new LinkedHashSet<>();
 
     Builder add(CardSequenceDetector detector) {
       detectors.add(detector);
