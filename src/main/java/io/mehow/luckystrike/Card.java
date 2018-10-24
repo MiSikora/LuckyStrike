@@ -1,9 +1,11 @@
 package io.mehow.luckystrike;
 
+import com.squareup.moshi.Json;
+
 final class Card {
-  final Rank rank;
+  @Json(name = "value") final Rank rank;
   final Suit suit;
-  final String imageUrl;
+  @Json(name = "image") final String imageUrl;
 
   Card(Rank rank, Suit suit, String imageUrl) {
     this.rank = rank;
