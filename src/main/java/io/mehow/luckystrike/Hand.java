@@ -10,7 +10,7 @@ class Hand {
   private final List<Card> cards;
   private final Set<CardSequence> sequences;
 
-  public Hand(List<Card> cards) {
+  Hand(List<Card> cards) {
     this(cards, Collections.emptySet());
   }
 
@@ -19,11 +19,11 @@ class Hand {
     this.sequences = new LinkedHashSet<>(sequences);
   }
 
-  public List<Card> getCards() {
+  List<Card> getCards() {
     return new ArrayList<>(cards);
   }
 
-  public Set<CardSequence> getSequences() {
+  Set<CardSequence> getSequences() {
     return new LinkedHashSet<>(sequences);
   }
 
