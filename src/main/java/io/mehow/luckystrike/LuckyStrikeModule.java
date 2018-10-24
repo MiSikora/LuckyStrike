@@ -5,6 +5,7 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 import io.mehow.luckystrike.Card.Rank;
+import io.mehow.luckystrike.PlayGameActivity.PlayGameModule;
 import javax.inject.Singleton;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -27,4 +28,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
   }
 
   @ContributesAndroidInjector abstract CreateDeckActivity contributeCreateDeckActivity();
+
+  @ContributesAndroidInjector(modules = PlayGameModule.class)
+  abstract PlayGameActivity contributePlayGameActivity();
 }

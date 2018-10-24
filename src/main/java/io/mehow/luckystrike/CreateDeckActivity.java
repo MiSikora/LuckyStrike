@@ -63,10 +63,7 @@ public final class CreateDeckActivity extends Activity {
 
   private void consumeResult(CreateDeckResult result) {
     progressBar.setVisibility(result.pending ? VISIBLE : GONE);
-    result.deckId.ifPresent(deckId -> {
-      // TODO: Navigate to another Activity.
-      Toast.makeText(this, deckId, Toast.LENGTH_SHORT).show();
-    });
+    result.deckId.ifPresent(deckId -> startActivity(PlayGameActivity.show(this, deckId)));
     result.error.ifPresent(this::toast);
   }
 

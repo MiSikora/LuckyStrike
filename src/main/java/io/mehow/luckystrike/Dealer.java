@@ -2,12 +2,13 @@ package io.mehow.luckystrike;
 
 import io.reactivex.Single;
 import java.util.List;
+import javax.inject.Inject;
 
 final class Dealer {
   private final String deckId;
   private final DeckApi deckApi;
 
-  Dealer(String deckId, DeckApi deckApi) {
+  @Inject Dealer(String deckId, DeckApi deckApi) {
     this.deckId = deckId;
     this.deckApi = deckApi;
   }
