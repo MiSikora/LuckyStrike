@@ -3,10 +3,12 @@ package io.mehow.luckystrike;
 final class Card {
   final Rank rank;
   final Suit suit;
+  final String imageUrl;
 
-  Card(Rank rank, Suit suit) {
+  Card(Rank rank, Suit suit, String imageUrl) {
     this.rank = rank;
     this.suit = suit;
+    this.imageUrl = imageUrl;
   }
 
   enum Rank {

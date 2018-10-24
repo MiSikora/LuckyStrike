@@ -19,46 +19,46 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 public final class StairSequenceDetectorTest {
   static final Hand NO_SEQUENCE = new Hand(Arrays.asList(
-      new Card(TWO, CLUBS),
-      new Card(FOUR, CLUBS),
-      new Card(SIX, CLUBS),
-      new Card(SIX, CLUBS),
-      new Card(FOUR, CLUBS),
-      new Card(TWO, CLUBS)
+      new Card(TWO, CLUBS, ""),
+      new Card(FOUR, CLUBS, ""),
+      new Card(SIX, CLUBS, ""),
+      new Card(SIX, CLUBS, ""),
+      new Card(FOUR, CLUBS, ""),
+      new Card(TWO, CLUBS, "")
   ));
 
   static final List<Hand> SEQUENCES_OF_TWO = Arrays.asList(
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(THREE, DIAMONDS),
-          new Card(FIVE, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(THREE, DIAMONDS, ""),
+          new Card(FIVE, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(FOUR, DIAMONDS),
-          new Card(FIVE, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(FOUR, DIAMONDS, ""),
+          new Card(FIVE, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(FOUR, DIAMONDS),
-          new Card(FIVE, HEARTS),
-          new Card(SEVEN, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(FOUR, DIAMONDS, ""),
+          new Card(FIVE, HEARTS, ""),
+          new Card(SEVEN, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(FIVE, CLUBS),
-          new Card(FOUR, DIAMONDS),
-          new Card(TWO, HEARTS)
+          new Card(FIVE, CLUBS, ""),
+          new Card(FOUR, DIAMONDS, ""),
+          new Card(TWO, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(FIVE, CLUBS),
-          new Card(THREE, DIAMONDS),
-          new Card(TWO, HEARTS)
+          new Card(FIVE, CLUBS, ""),
+          new Card(THREE, DIAMONDS, ""),
+          new Card(TWO, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(SEVEN, CLUBS),
-          new Card(FIVE, DIAMONDS),
-          new Card(FOUR, HEARTS),
-          new Card(TWO, HEARTS)
+          new Card(SEVEN, CLUBS, ""),
+          new Card(FIVE, DIAMONDS, ""),
+          new Card(FOUR, HEARTS, ""),
+          new Card(TWO, HEARTS, "")
       ))
   );
 

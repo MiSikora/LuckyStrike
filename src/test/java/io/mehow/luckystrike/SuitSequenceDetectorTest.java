@@ -16,32 +16,32 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 public final class SuitSequenceDetectorTest {
   static final Hand NO_SEQUENCE = new Hand(Arrays.asList(
-      new Card(TWO, CLUBS),
-      new Card(TWO, DIAMONDS),
-      new Card(TWO, HEARTS),
-      new Card(TWO, SPADES)
+      new Card(TWO, CLUBS, ""),
+      new Card(TWO, DIAMONDS, ""),
+      new Card(TWO, HEARTS, ""),
+      new Card(TWO, SPADES, "")
   ));
 
   static final List<Hand> SEQUENCES_OF_TWO = Arrays.asList(
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(TWO, DIAMONDS),
-          new Card(THREE, CLUBS)
+          new Card(TWO, CLUBS, ""),
+          new Card(TWO, DIAMONDS, ""),
+          new Card(THREE, CLUBS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, DIAMONDS),
-          new Card(THREE, DIAMONDS),
-          new Card(TWO, HEARTS)
+          new Card(TWO, DIAMONDS, ""),
+          new Card(THREE, DIAMONDS, ""),
+          new Card(TWO, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(THREE, HEARTS),
-          new Card(THREE, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(THREE, HEARTS, ""),
+          new Card(THREE, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(THREE, SPADES),
-          new Card(THREE, SPADES)
+          new Card(TWO, CLUBS, ""),
+          new Card(THREE, SPADES, ""),
+          new Card(THREE, SPADES, "")
       ))
   );
 

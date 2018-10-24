@@ -26,47 +26,47 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 public final class FigureSequenceDetectorTest {
   static final Hand NO_SEQUENCE = new Hand(Arrays.asList(
-      new Card(ACE, CLUBS),
-      new Card(TWO, CLUBS),
-      new Card(TWO, CLUBS),
-      new Card(THREE, CLUBS),
-      new Card(THREE, CLUBS),
-      new Card(FOUR, CLUBS),
-      new Card(FOUR, CLUBS),
-      new Card(FIVE, CLUBS),
-      new Card(FIVE, CLUBS),
-      new Card(SIX, CLUBS),
-      new Card(SIX, CLUBS),
-      new Card(SEVEN, CLUBS),
-      new Card(SEVEN, CLUBS),
-      new Card(EIGHT, CLUBS),
-      new Card(EIGHT, CLUBS),
-      new Card(NINE, CLUBS),
-      new Card(NINE, CLUBS),
-      new Card(TEN, CLUBS),
-      new Card(TEN, CLUBS)
+      new Card(ACE, CLUBS, ""),
+      new Card(TWO, CLUBS, ""),
+      new Card(TWO, CLUBS, ""),
+      new Card(THREE, CLUBS, ""),
+      new Card(THREE, CLUBS, ""),
+      new Card(FOUR, CLUBS, ""),
+      new Card(FOUR, CLUBS, ""),
+      new Card(FIVE, CLUBS, ""),
+      new Card(FIVE, CLUBS, ""),
+      new Card(SIX, CLUBS, ""),
+      new Card(SIX, CLUBS, ""),
+      new Card(SEVEN, CLUBS, ""),
+      new Card(SEVEN, CLUBS, ""),
+      new Card(EIGHT, CLUBS, ""),
+      new Card(EIGHT, CLUBS, ""),
+      new Card(NINE, CLUBS, ""),
+      new Card(NINE, CLUBS, ""),
+      new Card(TEN, CLUBS, ""),
+      new Card(TEN, CLUBS, "")
   ));
 
   static final List<Hand> SEQUENCES_OF_TWO = Arrays.asList(
       new Hand(Arrays.asList(
-          new Card(ACE, CLUBS),
-          new Card(ACE, DIAMONDS),
-          new Card(THREE, HEARTS)
+          new Card(ACE, CLUBS, ""),
+          new Card(ACE, DIAMONDS, ""),
+          new Card(THREE, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(ACE, CLUBS),
-          new Card(THREE, DIAMONDS),
-          new Card(JACK, HEARTS)
+          new Card(ACE, CLUBS, ""),
+          new Card(THREE, DIAMONDS, ""),
+          new Card(JACK, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(JACK, DIAMONDS),
-          new Card(QUEEN, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(JACK, DIAMONDS, ""),
+          new Card(QUEEN, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(QUEEN, DIAMONDS),
-          new Card(KING, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(QUEEN, DIAMONDS, ""),
+          new Card(KING, HEARTS, "")
       ))
   );
 

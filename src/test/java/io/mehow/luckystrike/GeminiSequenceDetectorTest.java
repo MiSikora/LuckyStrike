@@ -16,26 +16,26 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 public final class GeminiSequenceDetectorTest {
   static final Hand NO_SEQUENCE = new Hand(Arrays.asList(
-      new Card(TWO, CLUBS),
-      new Card(THREE, CLUBS),
-      new Card(FOUR, CLUBS)
+      new Card(TWO, CLUBS, ""),
+      new Card(THREE, CLUBS, ""),
+      new Card(FOUR, CLUBS, "")
   ));
 
   static final List<Hand> SEQUENCES_OF_TWO = Arrays.asList(
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(TWO, DIAMONDS),
-          new Card(THREE, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(TWO, DIAMONDS, ""),
+          new Card(THREE, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(THREE, DIAMONDS),
-          new Card(TWO, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(THREE, DIAMONDS, ""),
+          new Card(TWO, HEARTS, "")
       )),
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS),
-          new Card(THREE, DIAMONDS),
-          new Card(THREE, HEARTS)
+          new Card(TWO, CLUBS, ""),
+          new Card(THREE, DIAMONDS, ""),
+          new Card(THREE, HEARTS, "")
       ))
   );
 
