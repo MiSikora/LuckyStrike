@@ -62,6 +62,12 @@ public final class StairSequenceDetectorTest {
       ))
   );
 
+  static final Hand SEQUENCE_OF_THREE = new Hand(Arrays.asList(
+      new Card(TWO, CLUBS, ""),
+      new Card(THREE, DIAMONDS, ""),
+      new Card(FOUR, HEARTS, "")
+  ));
+
   @Test public void sufficientCountMustBePositive() {
     assertThatCode(() -> new StairSequenceDetector(-1))
         .isInstanceOf(IllegalArgumentException.class)
@@ -95,5 +101,9 @@ public final class StairSequenceDetectorTest {
 
       assertThat(result.getSequences()).containsOnly(STAIR);
     });
+
+    Hand result = detector.detectSequence(SEQUENCE_OF_THREE);
+
+    assertThat(result.getSequences()).containsOnly(STAIR);
   }
 }

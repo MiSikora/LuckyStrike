@@ -70,6 +70,12 @@ public final class FigureSequenceDetectorTest {
       ))
   );
 
+  static Hand SEQUENCE_OF_THREE = new Hand(Arrays.asList(
+      new Card(ACE, CLUBS, ""),
+      new Card(ACE, DIAMONDS, ""),
+      new Card(JACK, HEARTS, "")
+  ));
+
   @Test public void sufficientCountMustBePositive() {
     assertThatCode(() -> new FigureSequenceDetector(-1))
         .isInstanceOf(IllegalArgumentException.class)
@@ -103,5 +109,9 @@ public final class FigureSequenceDetectorTest {
 
       assertThat(result.getSequences()).containsOnly(FIGURE);
     });
+
+    Hand result = detector.detectSequence(SEQUENCE_OF_THREE);
+
+    assertThat(result.getSequences()).containsOnly(FIGURE);
   }
 }

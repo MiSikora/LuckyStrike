@@ -39,6 +39,12 @@ public final class GeminiSequenceDetectorTest {
       ))
   );
 
+  static final Hand SEQUENCE_OF_THREE = new Hand(Arrays.asList(
+      new Card(TWO, CLUBS, ""),
+      new Card(TWO, DIAMONDS, ""),
+      new Card(TWO, HEARTS, "")
+  ));
+
   @Test public void sufficientCountMustBePositive() {
     assertThatCode(() -> new GeminiSequenceDetector(-1))
         .isInstanceOf(IllegalArgumentException.class)
@@ -72,5 +78,9 @@ public final class GeminiSequenceDetectorTest {
 
       assertThat(result.getSequences()).containsOnly(GEMINI);
     });
+
+    Hand result = detector.detectSequence(SEQUENCE_OF_THREE);
+
+    assertThat(result.getSequences()).containsOnly(GEMINI);
   }
 }

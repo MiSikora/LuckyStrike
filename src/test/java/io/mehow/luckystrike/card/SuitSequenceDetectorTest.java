@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 
+import static io.mehow.luckystrike.card.Card.Rank.ACE;
 import static io.mehow.luckystrike.card.Card.Rank.THREE;
 import static io.mehow.luckystrike.card.Card.Rank.TWO;
 import static io.mehow.luckystrike.card.Card.Suit.CLUBS;
@@ -24,7 +25,7 @@ public final class SuitSequenceDetectorTest {
 
   static final List<Hand> SEQUENCES_OF_TWO = Arrays.asList(
       new Hand(Arrays.asList(
-          new Card(TWO, CLUBS, ""),
+          new Card(ACE, CLUBS, ""),
           new Card(TWO, DIAMONDS, ""),
           new Card(THREE, CLUBS, "")
       )),
@@ -44,6 +45,12 @@ public final class SuitSequenceDetectorTest {
           new Card(THREE, SPADES, "")
       ))
   );
+
+  static final Hand SEQUENCE_OF_THREE = new Hand(Arrays.asList(
+      new Card(TWO, SPADES, ""),
+      new Card(THREE, SPADES, ""),
+      new Card(THREE, SPADES, "")
+  ));
 
   @Test public void sufficientCountMustBePositive() {
     assertThatCode(() -> new SuitSequenceDetector(-1))
@@ -78,5 +85,9 @@ public final class SuitSequenceDetectorTest {
 
       assertThat(result.getSequences()).containsOnly(SUIT);
     });
+
+    Hand result = detector.detectSequence(SEQUENCE_OF_THREE);
+
+    assertThat(result.getSequences()).containsOnly(SUIT);
   }
 }

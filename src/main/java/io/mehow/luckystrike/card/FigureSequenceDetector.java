@@ -18,7 +18,7 @@ public final class FigureSequenceDetector implements CardSequenceDetector {
         .filter(it -> it.rank.isFigure)
         .count();
 
-    if (figuresCount == sufficientCount) {
+    if (figuresCount >= sufficientCount) {
       return hand.addSequence(FIGURE);
     }
     return hand;
