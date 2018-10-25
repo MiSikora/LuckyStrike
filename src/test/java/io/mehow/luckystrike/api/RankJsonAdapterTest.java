@@ -4,7 +4,6 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import io.mehow.luckystrike.api.RankJsonAdapter;
 import io.mehow.luckystrike.card.Card.Rank;
 import java.io.IOException;
 import java.lang.reflect.Type;

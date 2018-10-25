@@ -28,7 +28,8 @@ public final class PlayGamePresenterTest {
     PlayGamePresenter presenter = new PlayGamePresenter(dealer, hand -> hand.addSequence(GEMINI));
 
     eventSubject = PublishSubject.create();
-    uiModels = eventSubject.compose(presenter::accept).test();
+    presenter.accept(eventSubject);
+    uiModels = presenter.uiModels().test();
   }
 
   @Test public void startsWithIdle() {

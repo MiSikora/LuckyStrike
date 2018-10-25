@@ -5,25 +5,33 @@ import io.mehow.luckystrike.card.Dealer;
 import io.mehow.luckystrike.card.Dealer.DrawResult;
 import io.mehow.luckystrike.card.Hand;
 import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 import javax.inject.Inject;
 
 final class PlayGamePresenter {
-  private final Dealer dealer;
-  private final CardSequenceDetector detector;
+  private final Subject<DrawEvent> events = PublishSubject.create();
+  private final Observable<UiModel> uiModels;
 
   @Inject PlayGamePresenter(Dealer dealer, CardSequenceDetector detector) {
-    this.dealer = dealer;
-    this.detector = detector;
-  }
-
-  Observable<UiModel> accept(Observable<DrawEvent> events) {
-    return events.switchMap(event -> dealer.draw(event.count)
-        .map(this::analyzeSequences)
+    uiModels = events.switchMap(event -> dealer.draw(event.count)
+        .map(result -> analyzeSequences(result, detector))
         .toObservable())
-        .scan(UiModel.idle(), this::mapResultToModel);
+        .scan(UiModel.idle(), this::mapResultToModel)
+        .replay(1)
+        .autoConnect(0);
   }
 
-  private DrawResult analyzeSequences(DrawResult result) {
+  Disposable accept(Observable<DrawEvent> events) {
+    return events.subscribe(this.events::onNext);
+  }
+
+  Observable<UiModel> uiModels() {
+    return uiModels;
+  }
+
+  private DrawResult analyzeSequences(DrawResult result, CardSequenceDetector detector) {
     if (result.hand != null) {
       Hand analyzedHand = detector.detectSequence(result.hand);
       return DrawResult.success(analyzedHand);

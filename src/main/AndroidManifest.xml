@@ -13,18 +13,14 @@
       android:supportsRtl="true"
       android:theme="@style/Theme.LuckyStrike"
       tools:ignore="GoogleAppIndexingWarning">
-    <activity
-        android:name=".game.start.StartGameActivity"
-        android:launchMode="singleInstance"
-        >
+    <activity android:name=".game.start.StartGameActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
+
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <activity
-        android:name=".game.play.PlayGameActivity"
-        android:launchMode="singleInstance"/>
+    <activity android:name=".game.play.PlayGameActivity"/>
   </application>
 </manifest>

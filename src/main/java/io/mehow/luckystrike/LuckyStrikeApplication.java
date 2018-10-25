@@ -11,7 +11,6 @@ public final class LuckyStrikeApplication extends Application implements HasActi
   @Override public void onCreate() {
     super.onCreate();
     appComponent = LuckyStrikeComponent.create(this);
-
   }
 
   @Override public AndroidInjector<Activity> activityInjector() {
