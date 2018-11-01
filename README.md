@@ -1,0 +1,3 @@
+# LuckyStrike
+
+A recruitment task.
